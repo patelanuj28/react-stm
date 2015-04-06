@@ -4,10 +4,12 @@ var Reflux = require('reflux');
 
 var constants = require('../constants');
 var vsStore = require('../stores/virtualserver-store');
+var poolStore = require('../stores/pool-store');
 
 var SmallList = require('./virtualserver-list-small');
 var LargeList = require('./virtualserver-list-large');
 var VSActions = require('../actions/virtualserver-actions');
+var PoolActions = require('../actions/pool-actions');
 
 module.exports = React.createClass({
     displayName: 'VirtualServers',
@@ -18,8 +20,10 @@ module.exports = React.createClass({
     componentDidMount: function() {
         this.unsubscribe = vsStore.listen(this.onStoreUpdate);
         VSActions.refreshVirtualServers(this.context.session);
+        PoolActions.refreshPools(this.context.session);
         this.refresh = setInterval(()=> {
             VSActions.refreshVirtualServers(this.context.session);
+            PoolActions.refreshPools(this.context.session);
         },constants.POLL_INTERVAL);
     },
     componentWillUnmount: function() {

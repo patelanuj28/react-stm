@@ -42,7 +42,9 @@ module.exports = {
                 if (err) {
                     return callback(err,null);
                 }
-                list.map((storeFile)=> {
+                list.filter((arg) => {
+                    return /.js$/.test(arg) || /.jsx$/.test(arg);
+                }).map((storeFile)=> {
                     stores.push(require(path.join(__dirname,'stores',storeFile)));
                 });
                 initializeSession(state, session, callback); 

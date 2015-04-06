@@ -6,6 +6,7 @@ var VSActions = require('../actions/virtualserver-actions');
 var FormMixin = require('./form-mixin');
 
 var vsStore = require('../stores/virtualserver-store');
+var poolStore = require('../stores/pool-store');
 
 module.exports = React.createClass({
     displayName: 'VirtualServerDetail',
@@ -15,7 +16,8 @@ module.exports = React.createClass({
         session: React.PropTypes.object
     },
     componentDidMount: function() {
-        this.listenTo(vsStore,this.onStoreUpdate);
+        this.listenTo(vsStore,this.onVSStoreUpdate);
+        this.listenTo(poolStore,this.onPoolStoreUpdate);
     },
     getData: function() {
         var data = vsStore.getVirtualServer(
@@ -30,6 +32,7 @@ module.exports = React.createClass({
             name: this.context.router.getCurrentParams().name,
             data: data,
             initialData: data,
+            pools: poolStore.getPools(this.context.session),
             changes: {}
         };
     },
@@ -43,9 +46,14 @@ module.exports = React.createClass({
             this.setState(this.getStateForRoute());
         }
     },
-    onStoreUpdate: function(event) {
+    onVSStoreUpdate: function(event) {
         if (event.type === 'refresh') {
             this.setState({ data: this.getData() });
+        }
+    },
+    onPoolStoreUpdate: function(event) {
+        if (event.type === 'refresh') {
+            this.setState({ pools: event.pools });
         }
     },
     onApplyFormChanges: function(changes) {
@@ -64,7 +72,7 @@ module.exports = React.createClass({
             <div className='alert alert-danger'>
                 <i className='fa fa-warning text-danger'></i> This information has been changed elsewhere, clicking Apply may overwrite those changes {conflicts.join(', ')}
             </div>) : null;
-        
+
         return (<div>
             <h2>{this.state.name} <small>({this.state.data.protocol.toUpperCase()}, port {this.state.data.port})</small></h2>
             <hr/>
@@ -99,6 +107,16 @@ module.exports = React.createClass({
                     <div className='col-sm-2'>
                         <input className='form-control' onChange={this.handleFormChange.bind(this,'port')} 
                             value={this.getFormValue('port')} />
+                    </div>
+                </div>
+                <div className='form-group'>
+                    <label className='col-sm-2 control-label'>Pool</label>
+                    <div className='col-sm-5'>
+                        <select className='form-control' onChange={this.handleFormChange.bind(this,'pool')} value={this.state.data.pool}>
+                            {this.state.pools ? Object.keys(this.state.pools).map((name)=> {
+                                return (<option key={name} value={name}>{name}</option>);
+                            }) : null}
+                        </select>
                     </div>
                 </div>
                 <div className='form-group'>

@@ -7,10 +7,6 @@ html,body,h1,h2,h3,h4,h5 {
     font-family: 'Roboto','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 
-.btn-primary {
-    background-color: #111;
-    border-color: #000;
-}
 
 a {
     color: #000;
@@ -20,13 +16,21 @@ a:hover {
     color: #111;
 }
 
-.btn-primary:hover {
-    background-color: #222;
-    border-color: #111;
+.btn,.btn:focus,.btn:active,.btn:visited {
+    border: 1px solid #000;
 }
 
-.form-control:focus {
-    border-color: #111;
+.btn,.btn-primary{
+    outline: 0px none !important;
+}
+
+.btn-primary,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary:visited {
+    background-color: #222;
+    border: 1px solid #111;
+}
+
+.form-control:focus,.btn:focus,.btn:active,.btn-primary:focus,.btn-primary:active {
+    border: 1px solid #111;
     outline: 0px none;
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(0, 0, 0, 0.6);
 }

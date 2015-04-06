@@ -11,14 +11,17 @@ module.exports = Reflux.createStore({
     },
     createDefaultSession: function(session) {
         this.getData(session,(data) => {
-            data.virtualServers = null;
+            data.pools = null;
             data.pending = 0;
         });
     },
     initializeSession: function(routerState, session, done)
     {
         this.getData(session,(data) => {
-            if (routerState.pathname.indexOf('/pools')===0) {
+            // pools are shown on both the pool and virtual server pages
+            // so pre-populate in both cases
+            if (routerState.pathname.indexOf('/pools')===0 || 
+                routerState.pathname.indexOf('/virtualservers')===0) {
                 stmApi.getPools(session.accessToken,(err,pools)=> {
                     data.pools = pools;
                     done();
@@ -34,7 +37,6 @@ module.exports = Reflux.createStore({
                 if (err) {
                     return console.error('Unable to get pools: %s',err.toString());
                 }
-
                 if (!data.pending) {
                     data.pools = pools;
                     this.trigger({ 
