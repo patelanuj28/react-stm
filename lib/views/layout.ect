@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang='en'>
+   <head>
+      <title>SteelApp Traffic Manager</title>
+      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+      <link rel='stylesheet' type='text/css' href='<%- @buster('/assets/vendor.css') %>' />
+      <link rel='stylesheet' type='text/css' href='<%- @buster('/assets/app.css') %>' />
+      <%- content 'head' %>
+   </head>
+   <body>
+    <% content %>
+    <script type='text/javascript' src='<%- @buster('/assets/vendor.js') %>'></script>
+    <script type='text/javascript' src='<%- @buster('/assets/app.js') %>'></script>
+    <%- content 'scripts' %>
+   </body>
+</html>

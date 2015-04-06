@@ -1,0 +1,7 @@
+<% extend 'layout.ect' %>
+<div id='outer-wrapper'><%- @content %></div>
+<% block 'scripts': %>
+    <script type='text/javascript'>
+        ui.app.renderApp('outer-wrapper',<%- JSON.stringify(@session) %>);
+    </script>
+<% end %>

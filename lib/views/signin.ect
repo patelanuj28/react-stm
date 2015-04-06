@@ -1,0 +1,28 @@
+<% extend 'layout.ect' %>
+<div id='outer-wrapper'>
+    <div class='auth-wrapper container'>
+        <div class='auth-container'>
+            <div class='signin-wrapper'>
+                <div class='row'>
+                    <div class='col-md-4 col-md-offset-4'>
+                        <h1 class='auth-logo'>Brocade</h1>
+                        <h1><small>SteelApp Traffic Manager</small></h1>
+                    </div>
+                </div>
+                <div class='row'>
+                    <div class='col-md-4 col-md-offset-4'>
+                        <form method='POST'>
+                            <div class='form-group'>
+                                <input type='text' class='form-control' name='username' placeholder='Enter username' value='<%= @username %>' />
+                            </div>
+                            <div class='form-group'>
+                                <input type='password' class='form-control' name='password' placeholder='Enter password' />
+                            </div>
+                            <button type='submit' class='btn btn-lg btn-primary'>Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

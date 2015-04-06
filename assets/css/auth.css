@@ -1,0 +1,46 @@
+.auth-wrapper {
+    height: 100%;
+}
+
+.auth-container {
+    height: 100%;
+    width: 100%;
+    display: table;
+}
+
+.signin-wrapper {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.signin-wrapper h1 {
+    padding: 0;
+    margin: 0;
+}
+
+.signin-wrapper h1.auth-logo {
+    text-indent: -9999px;
+    height: 64px;
+    background-image: url('/img/logo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+    .signin-wrapper h1.auth-logo {
+        background-image: url('/img/logo@2x.png');
+        background-size: 195px 64px;
+    }
+}
+
+.signin-wrapper form {
+    margin-top: 32px;
+}
+
+
+.signin-wrapper .btn {
+    margin-top: 16px;
+}
+

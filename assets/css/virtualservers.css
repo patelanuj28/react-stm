@@ -1,0 +1,89 @@
+.vs-wrapper {
+    height: 100%;
+}
+
+.vs-small-list form {
+    margin-top: 15px;
+}
+
+.vs-list ul {
+    list-style: none;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.vs-list {
+    border-right: 1px solid #eee;
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.vs-list ul li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.vs-list ul li h4 {
+    text-decoration: none;
+    text-transform: capitalize;
+    margin: 0 0 4px 0;
+    padding: 0;
+}
+
+.vs-list ul li p {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding-left: 36px;
+    color: #555;
+    font-size: 12px;
+    text-weight: normal;
+    margin: 0;
+}
+
+.vs-list ul li:nth-child(odd) {
+    background-color: #fdfdfd;
+}
+
+.vs-list ul li.active {
+    background-color: #eee;
+}
+
+
+.vs-list ul li i {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.vs-list ul li i.enabled {
+    color: #55ee55;
+}
+
+.vs-list ul li i.disabled {
+    color: #ccc;
+}
+
+.vs-detail {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.vs-detail h2 {
+    text-transform: capitalize;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 12px;
+}
+
+.vs-detail hr {
+    margin-top: 0px;
+}
+
+.vs-detail input[type='button'] {
+    margin-left: 15px;
+}
+
+.vs-detail .text-danger {
+    margin-left: 5px;
+}
