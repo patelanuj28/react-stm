@@ -36,6 +36,7 @@ NODE_ENV=production gulp build
 NODE_ENV=production gulp server
 ```
  * NOTE: When switching between dev and production builds run ```gulp clean```.
+ * To view the demo once the server is running, go to http://localhost:3000 and enter your STM credentials when prompted.
 
 #Configuration
 To work, the server needs access to a SteelApp Traffic Manager to which it can make REST API requests. Before running the server, go to lib/constants.js and change STM_HOST to point to the IP address of your Traffic Manager.
