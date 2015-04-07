@@ -1,4 +1,4 @@
-# react-stm
+# React-STM
 A prototype STM UI built using react and the STM REST API
 
 #Installation
@@ -7,6 +7,12 @@ In order to get things running you'll need to install a few dependencies
  * MongoDB. Required for converting STM's basic auth to a bearer token based auth scheme. This could conceivably be      any db such as postgres or mysql with a little modification, but I used mongo as I had it set up on my dev machine    at the time. When the REST API has token auth built in, no database should be required. (Update: installing mongodb    on an lxc container is a PITA - so I might switch over to one of the aforementioned db's when I get a chance!)
  * To install everything on ubuntu 14.x, run the following commands
 ```
+# install mongodb
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-get update
+sudo apt-get install mongodb-org
+
 # install nodejs, npm & dependancies
 sudo apt-get install nodejs nodejs-legacy build-essential npm
 
@@ -17,12 +23,6 @@ sudo npm install gulp -g
 # (NOTE: a lot of these packages are for the dev toolchain, the amount of packages required to 
 # actually run a production build is less)
 npm install
-
-# install mongodb
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
-echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
-sudo apt-get update
-sudo apt-get install mongodb-org
 ```
 
  
