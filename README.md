@@ -8,8 +8,9 @@ A prototype STM UI built using react and the STM REST API
  * React-Router (Javascript library used to map urls to views in the UI https://github.com/rackt/react-router/blob/master/docs/guides/overview.md)
  * Reflux (Library used to implement [Flux](https://facebook.github.io/flux/) architecture https://github.com/spoike/refluxjs)
  * Mocha (Used for running unit tests http://mochajs.org/)
+ * Chai & Sinon (Used for test assertions and mocking http://chaijs.com/ http://sinonjs.org/)
  * Webpack (Used for bundling optimized build assets and providing hot-reloading in the browser during development http://webpack.github.io/)
- * Gulp (Build tool http://gulpjs.com/)
+ * Gulp (Build & general automation tool http://gulpjs.com/)
  
 #Installation
 In order to get things running you'll need to install a few dependencies
