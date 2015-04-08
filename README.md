@@ -1,6 +1,16 @@
 # React-STM
 A prototype STM UI built using react and the STM REST API
 
+# Components & features
+ * Node.js (Used to run the server and toolchain https://nodejs.org/)
+ * Express.js (HTTP library used to serve the UI and proxy STM API calls http://expressjs.com/)
+ * React.js (Javascript view library used to render the UI https://facebook.github.io/react/)
+ * React-Router (Javascript library used to map urls to views in the UI https://github.com/rackt/react-router/blob/master/docs/guides/overview.md)
+ * Reflux (Library used to implement [Flux](https://facebook.github.io/flux/) architecture https://github.com/spoike/refluxjs)
+ * Mocha (Used for running unit tests http://mochajs.org/)
+ * Webpack (Used for bundling optimized build assets and providing hot-reloading in the browser during development http://webpack.github.io/)
+ * Gulp (Build tool http://gulpjs.com/)
+ 
 #Installation
 In order to get things running you'll need to install a few dependencies
  * Node.js & NPM (0.10 or later). Node.js is used to run the demo server and to run all the dev toolchain related    utilities.
@@ -37,6 +47,7 @@ NODE_ENV=production gulp server
 ```
  * NOTE: When switching between dev and production builds run ```gulp clean```.
  * To view the demo once the server is running, go to http://localhost:3000 and enter your STM credentials when prompted.
+ * To view the demo via the live-update server go to http://localhost:3001
 
 #Configuration
 To work, the server needs access to a SteelApp Traffic Manager to which it can make REST API requests. Before running the server, go to lib/constants.js and change STM_HOST to point to the IP address of your Traffic Manager.
