@@ -29,7 +29,7 @@ npm install
 #Running 
 Gulp is used to run the various build & run related tasks. The tasks themselves are defined in gulpfile.js. To run the tasks below, make sure you are cd'ed into the root of the react-stm folder.
  * Running unit tests: ```gulp tests```. If you want the test runner to listen for changes to source files and run automatically, run ```gulp testsw```.
- * Running the server in development mode: ```gulp serverw```. The server will automatically restart when changes are detected to the backend source files. NOTE: the server uses ports 300 & 3001 by default so make sure these are unused
+ * Running the server in development mode: ```gulp serverw```. The server will automatically restart when changes are detected to the backend source files. NOTE: the server uses ports 3000 & 3001 by default so make sure these are unused
  * Running in production mode:
 ```
 NODE_ENV=production gulp build
