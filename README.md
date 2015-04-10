@@ -35,7 +35,7 @@ sudo npm install gulp node-inspector -g
 # actually run a production build is less)
 npm install
 ```
-
+ * Installing on windows: In addition to installing node & npm - to run the tests you will need to install python2.7 and visual studio 2010 express or later. These are necessary for building the contextify package which jsdom (used for testing DOM components) requires
  
 #Running 
 Gulp is used to run the various build & run related tasks. The tasks themselves are defined in gulpfile.js. To run the tasks below, make sure you are cd'ed into the root of the react-stm folder.
