@@ -115,7 +115,12 @@ gulp.task('server',function(callback) {
 			node.kill();
 		});
 	}
-	node  = spawn('node',['index.js'],{stdio:'inherit'});
+    var args = [];
+    if (process.env.NODE_ENV!=='production') {
+        args.push('--debug');
+    }
+    args.push('index.js');
+	node  = spawn('node',args,{stdio:'inherit'});
 	node.on('close',function(code) {
 		if ( code === 8 ) {
 			console.log('Error detected, waiting for changes...');

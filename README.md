@@ -27,8 +27,8 @@ sudo apt-get install mongodb-org
 # install nodejs, npm & dependancies
 sudo apt-get install nodejs nodejs-legacy build-essential npm
 
-# install gulp (the build tool) globally
-sudo npm install gulp -g
+# install gulp (the build tool) and node-inspector (the webkit based debugger) globally
+sudo npm install gulp node-inspector -g
 
 # install the packages to run the demo. Run this command from the root of the react-stm folder 
 # (NOTE: a lot of these packages are for the dev toolchain, the amount of packages required to 
