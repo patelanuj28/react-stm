@@ -97,7 +97,6 @@ gulp.task('fonts',function() {
 gulp.task('tests', function() {
 	return gulp.src(['tests/**/*'],{read:false})
 	.pipe(mocha({
-		bin:'node_modules/.bin/mocha',
     	R: 'spec',
         compilers: 'jsx:./jsx-require'
   	})).on('error', function(e) {
