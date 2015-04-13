@@ -14,7 +14,7 @@ var gulp = require('gulp'),
 	spawn = require('child_process').spawn;
 
 var constants = require('./lib/constants');
-var webpackConfig = process.env.NODE_ENV === 'production' ? require('./webpack.production') : require('./webpack.dev')(constants.APP_DOMAIN,constants.WEBPACK_PORT);
+var webpackConfig = process.env.NODE_ENV === 'production' ? require('./webpack.production') : require('./webpack.dev');
 
 var node;
 	
@@ -68,8 +68,8 @@ gulp.task('webpack', function(callback) {
 gulp.task('webpack-dev-server',['server'], function(callback) {
     var compiler = webpack(webpackConfig);
     var server = new webpackDevServer(compiler, {
-        contentBase: { target: 'http://'+constants.APP_DOMAIN+':'+constants.APP_PORT },
-        proxy: { '*': 'http://'+constants.APP_DOMAIN+':'+constants.APP_PORT },
+        contentBase: { target: 'http://127.0.0.1:'+constants.APP_PORT },
+        //proxy: { '*': 'http://127.0.0.1:'+constants.APP_PORT },
         publicPath: '/assets/',
         hot:true,
         stats: { colors: true }
