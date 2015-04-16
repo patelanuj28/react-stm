@@ -68,7 +68,7 @@ gulp.task('webpack', function(callback) {
 gulp.task('webpack-dev-server',['server'], function(callback) {
     var compiler = webpack(webpackConfig);
     var server = new webpackDevServer(compiler, {
-        contentBase: { target: 'http://127.0.0.1:'+constants.APP_PORT },
+        contentBase: { target: 'http://127.0.0.1:'+constants.APP_PORT, ws: true },
         //proxy: { '*': 'http://127.0.0.1:'+constants.APP_PORT },
         publicPath: '/assets/',
         hot:true,

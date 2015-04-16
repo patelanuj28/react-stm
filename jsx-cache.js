@@ -17,7 +17,6 @@ function getJSXTransformOptions(filename) {
     return {
        stripTypes: true,
        sourceFilename: filename.replace(__dirname,''),
-       sourceMap: true,
        harmony: true
     };
 }
