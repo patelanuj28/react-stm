@@ -7,6 +7,7 @@ var FormMixin = require('./form-mixin');
 
 var vsStore = require('../stores/virtualserver-store');
 var poolStore = require('../stores/pool-store');
+var validation = require('../validation-helper');
 
 module.exports = React.createClass({
     displayName: 'VirtualServerDetail',
@@ -28,13 +29,12 @@ module.exports = React.createClass({
     },
     getStateForRoute: function() {
         var data = this.getData();
-        return {
+        return this.mixinFormState({
             name: this.context.router.getCurrentParams().name,
             data: data,
             initialData: data,
             pools: poolStore.getPools(this.context.session),
-            changes: {}
-        };
+        });
     },
     getInitialState: function() {
         return this.getStateForRoute();
@@ -65,6 +65,12 @@ module.exports = React.createClass({
                     basic: changes
                 }
             });
+    },
+    onFormValidate: function(changes,errors) {
+        var port = validation.parseInt(changes.port);
+        if (port===null || port <= 0 || port >= 65535) {
+           errors.port = 'Port must be an integer between 1 and 65535'; 
+        }
     },
     render: function() {
         var conflicts = this.getConflicts();
@@ -102,7 +108,7 @@ module.exports = React.createClass({
                         </select>
                     </div>
                 </div>
-                <div className='form-group'>
+                <div className={'form-group '+(this.hasFormError('port')?'has-error':'')}>
                     <label className='col-sm-2 control-label'>Port</label>
                     <div className='col-sm-2'>
                         <input className='form-control' onChange={this.handleFormChange.bind(this,'port')} 
@@ -128,7 +134,7 @@ module.exports = React.createClass({
                 </div>
                 <div className='form-group'>
                     <div className='col-sm-offset-2'>
-                        <input type='button' className='btn btn-primary' onClick={this.applyFormChanges} value='Apply' />
+                        <input type='button' className='btn btn-primary' disabled={this.hasFormErrors()} onClick={this.applyFormChanges} value='Apply' />
                         <input type='button' className='btn' onClick={this.cancelFormChanges} value='Cancel' />
                     </div>
                 </div>

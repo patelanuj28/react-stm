@@ -16,6 +16,11 @@ function deepEqual(a,b) {
 }
 
 module.exports = {
+    mixinFormState: function(state) {
+        state.changes = {};
+        state.errors = {};
+        return state;
+    },
     handleFormChange: function(field,converter,event) {
         if (!event) {
             event = converter;
@@ -23,7 +28,11 @@ module.exports = {
         }
         var changes = clone(this.state.changes);
         changes[field] = converter ? converter(event.target.value) : event.target.value;
-        this.setState({ changes: changes});
+        var errors = {};
+        if (this.onFormValidate) {
+            this.onFormValidate(changes,errors);
+        }
+        this.setState({ changes: changes, errors: errors });
     },
     getFormValue: function(field,converter) {
         var value = this.state.changes[field];
@@ -32,22 +41,32 @@ module.exports = {
         }
         return converter ? converter(value) : value;
     },
+    hasFormError: function(field) {
+        return typeof(this.state.errors[field]) !== 'undefined';
+    },
+    hasFormErrors: function() {
+        return Object.keys(this.state.errors).length > 0;
+    },
     cancelFormChanges: function() {
         this.setState({ 
             changes: {},
+            errors: {},
             initialData: this.state.data
         });
     },
     applyFormChanges: function() {
         var data = merge(clone(this.state.data),this.state.changes);
+        var errors = {};
+        if (!this.onFormValidate || this.onFormValidate(this.state.changes)) {
+            this.onApplyFormChanges(this.state.changes,errors);
+            this.setState({ errors: errors });
+        }
         this.setState({
             data: data,
             initialData: data,
-            changes: {}
+            changes: {},
+            errors: errors
         });
-        if (!this.onFormValidate || this.onFormValidate(this.state.changes)) {
-            this.onApplyFormChanges(this.state.changes);
-        }
     },
     getConflicts: function() {
         // all fields where the initial data differs from the current data, and the user has

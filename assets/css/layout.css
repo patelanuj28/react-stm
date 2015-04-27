@@ -17,7 +17,7 @@ a:hover {
 }
 
 .btn,.btn:focus,.btn:active,.btn:visited {
-    border: 1px solid #000;
+    border: 1px solid #999;
 }
 
 .btn,.btn-primary{
@@ -27,6 +27,11 @@ a:hover {
 .btn-primary,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary:visited {
     background-color: #222;
     border: 1px solid #111;
+}
+
+.btn-primary:disabled {
+    background-color: #ccc;
+    border: 1px solid #bbb;
 }
 
 .form-control:focus,.btn:focus,.btn:active,.btn-primary:focus,.btn-primary:active {
@@ -193,3 +198,5 @@ a:hover {
     height: 100%;
 }
 }
+
+

@@ -34,7 +34,7 @@ module.exports = React.createClass({
                         </div>
                         <div className='row'>
                             <div className='col-md-12 main-nav'>
-                                <ul>
+                               <ul>
                                     <li><Router.Link to='vs'>Virtual servers</Router.Link></li>
                                     <li><Router.Link to='pools'>Pools</Router.Link></li>
                                 </ul>
